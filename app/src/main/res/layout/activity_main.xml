@@ -12,4 +12,21 @@
         android:text="Starte Kamera"
         android:id="@+id/bStartCamera"
         android:layout_gravity="center_horizontal|top" />
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/reinoldi" />
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:src="@drawable/bahnhof" />
+
+    <SeekBar
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_gravity="center_horizontal|bottom" />
 </FrameLayout>
