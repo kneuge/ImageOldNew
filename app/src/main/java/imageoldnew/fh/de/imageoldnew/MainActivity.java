@@ -30,6 +30,16 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(myIntent);
             }
         });
+
+        Button startoldnew = (Button)findViewById(R.id.bStartOldNew);
+        startoldnew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Start Camera Activity
+                Intent myIntent = new Intent(getApplicationContext(), OldNewActivity.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
 
