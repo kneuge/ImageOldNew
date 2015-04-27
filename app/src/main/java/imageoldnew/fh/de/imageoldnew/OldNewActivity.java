@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.SeekBar;
 
 
 public class OldNewActivity extends ActionBarActivity {
@@ -20,6 +22,20 @@ public class OldNewActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oldnew);
+
+        SeekBar bar = (SeekBar) findViewById(R.id.seekBar);
+        final ImageView imageView2 = (ImageView) findViewById(R.id.imageView2);
+
+        bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                imageView2.setAlpha(i/100f);
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) { }
+        });
     }
 
 
