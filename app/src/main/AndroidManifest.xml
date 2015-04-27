@@ -23,6 +23,10 @@
             android:name=".CameraActivity"
             android:label="@string/title_activity_camera" >
         </activity>
+        <activity
+            android:name=".OldNewActivity"
+            android:label="@string/title_activity_oldnew" >
+        </activity>
     </application>
 
 </manifest>
