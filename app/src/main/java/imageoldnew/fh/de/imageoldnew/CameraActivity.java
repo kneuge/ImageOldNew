@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 
 public class CameraActivity extends ActionBarActivity {
@@ -25,8 +24,10 @@ public class CameraActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
-        final ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
-        imageView1.setAlpha(0.5f);
+        TouchImageView img = new TouchImageView(this);
+        img.setImageResource(R.drawable.reinoldi2);
+        img.setMaxZoom(4f);
+        img.setAlpha(0.5f);
 
         //Init Camera
         try {
@@ -36,6 +37,7 @@ public class CameraActivity extends ActionBarActivity {
                 mCameraView = new CameraView(this, mCamera);//create a SurfaceView to show camera data
                 FrameLayout camera_view = (FrameLayout) findViewById(R.id.camera_view);
                 camera_view.addView(mCameraView);//add the SurfaceView to the layout
+                camera_view.addView(img);
             } else {
                 throw new Exception("No camera found.");
             }
