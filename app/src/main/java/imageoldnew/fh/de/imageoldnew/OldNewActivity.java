@@ -48,7 +48,7 @@ public class OldNewActivity extends ActionBarActivity {
 
 
         try {
-            InputStream inputStream = this.getResources().openRawResource(R.drawable.bahnhof);
+            InputStream inputStream = this.getResources().openRawResource(+ R.drawable.bahnhof);
             BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
             Bitmap bitmap = BitmapFactory.decodeStream(bufferedInputStream);
 
