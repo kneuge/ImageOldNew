@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:alpha="0"
-        android:src="@drawable/bahnhof" />
+        android:src="@drawable/reinoldi2" />
 
     <SeekBar
         android:layout_width="413dp"
