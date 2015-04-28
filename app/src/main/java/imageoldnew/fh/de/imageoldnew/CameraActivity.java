@@ -3,6 +3,7 @@ package imageoldnew.fh.de.imageoldnew;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 
 public class CameraActivity extends ActionBarActivity {
@@ -22,6 +24,9 @@ public class CameraActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
+        final ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
+        imageView1.setAlpha(0.5f);
 
         //Init Camera
         try {
@@ -60,6 +65,26 @@ public class CameraActivity extends ActionBarActivity {
                 System.exit(0);
             }
         });
+    }
+
+    // Storage for camera image URI components
+    private final static String CAPTURED_PHOTO_PATH_KEY = "mCurrentPhotoPath";
+    private final static String CAPTURED_PHOTO_URI_KEY = "mCapturedImageURI";
+    // Required for camera operations in order to save the image file on resume.
+    private String mCurrentPhotoPath = null;
+    private Uri mCapturedImageURI = null;
+    @Override public void onSaveInstanceState(Bundle savedInstanceState) {
+            if (mCurrentPhotoPath != null) {
+                savedInstanceState.putString(CAPTURED_PHOTO_PATH_KEY, mCurrentPhotoPath); }
+            if (mCapturedImageURI != null) {
+                savedInstanceState.putString(CAPTURED_PHOTO_URI_KEY, mCapturedImageURI.toString());
+        } super.onSaveInstanceState(savedInstanceState);
+    } @Override protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        if (savedInstanceState.containsKey(CAPTURED_PHOTO_PATH_KEY)) {
+            mCurrentPhotoPath = savedInstanceState.getString(CAPTURED_PHOTO_PATH_KEY);
+        } if (savedInstanceState.containsKey(CAPTURED_PHOTO_URI_KEY)) {
+            mCapturedImageURI = Uri.parse(savedInstanceState.getString(CAPTURED_PHOTO_URI_KEY));
+        } super.onRestoreInstanceState(savedInstanceState);
     }
 
 
