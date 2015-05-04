@@ -112,7 +112,7 @@ public class OldNewActivity extends ActionBarActivity {
         setContentView(R.layout.activity_oldnew);
 
         try {
-            InputStream inputStream = this.getResources().openRawResource(R.drawable.reinoldi2);
+            InputStream inputStream = this.getResources().openRawResource(+R.drawable.reinoldi2);
             BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
             Bitmap bitmap = BitmapFactory.decodeStream(bufferedInputStream);
 
