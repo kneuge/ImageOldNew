@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/reinoldi2"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside" />
+        android:scaleType="fitXY" />
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:alpha="0"
         android:src="@drawable/reinoldi2"
         android:adjustViewBounds="true"
-        android:scaleType="centerInside" />
+        android:scaleType="fitXY" />
 
     <SeekBar
         android:layout_width="413dp"
