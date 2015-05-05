@@ -184,6 +184,8 @@ public class OldNewActivity extends ActionBarActivity {
             ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
             imageView1.setImageBitmap(step4Bitmap);
 
+            imageView1.setScaleType(ImageView.ScaleType.FIT_XY);
+
         } catch (NullPointerException ex) {
             Log.e("Fehler", ex.getMessage());
         }

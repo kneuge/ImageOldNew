@@ -6,15 +6,19 @@
     android:paddingRight="16dp" >
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/reinoldi2" />
+        android:src="@drawable/reinoldi2"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside" />
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alpha="0"
-        android:src="@drawable/reinoldi2" />
+        android:src="@drawable/reinoldi2"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside" />
 
     <SeekBar
         android:layout_width="413dp"
