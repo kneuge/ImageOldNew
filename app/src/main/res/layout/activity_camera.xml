@@ -20,4 +20,12 @@
         android:layout_alignParentRight="true"
         android:background="@android:drawable/ic_menu_close_clear_cancel"
         android:padding="20dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Foto machen"
+        android:id="@+id/bTakePhoto"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

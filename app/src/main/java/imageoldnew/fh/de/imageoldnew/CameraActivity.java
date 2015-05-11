@@ -1,17 +1,29 @@
 package imageoldnew.fh.de.imageoldnew;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.io.Console;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 
 
 public class CameraActivity extends ActionBarActivity {
@@ -67,6 +79,14 @@ public class CameraActivity extends ActionBarActivity {
                 System.exit(0);
             }
         });
+
+        final Button takePhoto = (Button)findViewById(R.id.bTakePhoto);
+        takePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCamera.takePicture(null,null,myPictureCallback_JPG);
+            }
+        });
     }
 
     // Storage for camera image URI components
@@ -111,4 +131,31 @@ public class CameraActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    Camera.PictureCallback myPictureCallback_JPG = new Camera.PictureCallback(){
+    @Override
+    public void onPictureTaken(byte[] arg0, Camera arg1) {
+        Uri uriTarget = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new ContentValues());
+
+        OutputStream imageFileOS;
+        try {
+            imageFileOS = getContentResolver().openOutputStream(uriTarget);
+            imageFileOS.write(arg0);
+            imageFileOS.flush();
+            imageFileOS.close();
+
+            Toast.makeText(CameraActivity.this,
+                    "Image saved: " + uriTarget.toString(),
+                    Toast.LENGTH_LONG).show();
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+       // camera.startPreview();
+    }};
 }
