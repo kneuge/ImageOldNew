@@ -103,7 +103,7 @@ public class ImageFilter {
         }
     }
 
-    public Bitmap getFiltered() {
+    public Bitmap getFiltered(int alpha) {
         //Step1
         int[][] filter = new int[][]{
                 {0, 1, 0},
@@ -148,7 +148,7 @@ public class ImageFilter {
                 if (((tmp_px1 & 0xFF000000) >>> 24) > 127) {
                     newpx = tmp_px2 | 0xFF000000;
                 } else {
-                    newpx = tmp_px2 | 0xAF000000;
+                    newpx = tmp_px2 | (alpha << 24);
                 }
                 resultBitmap.setPixel(x, y, newpx);
             }
