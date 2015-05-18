@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alpha="0"
-        android:src="@drawable/reinoldi2"
+        android:src="@drawable/reinoldi2_2015"
         android:adjustViewBounds="true"
         android:scaleType="fitXY" />
 
