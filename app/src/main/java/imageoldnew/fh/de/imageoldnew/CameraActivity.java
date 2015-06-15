@@ -39,7 +39,10 @@ public class CameraActivity extends ActionBarActivity {
         try {
             InputStream inputStream = this.getResources().openRawResource(+R.drawable.reinoldi2);
             ImageFilter imageFilter = new ImageFilter(inputStream);
-            Bitmap bitmap = imageFilter.getFiltered(100);
+            Bitmap bitmap = imageFilter.getFiltered(0);
+
+            ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
+            imageView1.setImageBitmap(bitmap);
 
             img.setImageBitmap(bitmap);
             img.setMaxZoom(4f);
@@ -56,7 +59,11 @@ public class CameraActivity extends ActionBarActivity {
                 mCameraView = new CameraView(this, mCamera);//create a SurfaceView to show camera data
                 FrameLayout camera_view = (FrameLayout) findViewById(R.id.camera_view);
                 camera_view.addView(mCameraView);//add the SurfaceView to the layout
-                camera_view.addView(img);
+                //camera_view.addView(img);
+
+
+
+
             } else {
                 throw new Exception("No camera found.");
             }
