@@ -6,9 +6,13 @@ package imageoldnew.fh.de.imageoldnew;
 
 import android.content.Context;
 import android.hardware.Camera;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.WindowManager;
+
 import java.io.IOException;
 
 
@@ -18,13 +22,23 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback{
 
     public CameraView(Context context, Camera camera){
         super(context);
-
         mCamera = camera;
-        mCamera.setDisplayOrientation(90);
+        setCameraOrientation(context);
+
         //get the holder and set this class as the callback, so we can get camera data here
         mHolder = getHolder();
         mHolder.addCallback(this);
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_NORMAL);
+    }
+
+    public void setCameraOrientation(Context context) {
+        DisplayMetrics metrics = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(metrics);
+
+        if (windowManager.getDefaultDisplay().getRotation()== Surface.ROTATION_0) mCamera.setDisplayOrientation(90); //Portrait
+        else if (windowManager.getDefaultDisplay().getRotation()== Surface.ROTATION_90) mCamera.setDisplayOrientation(0); //Landscape links
+        else if (windowManager.getDefaultDisplay().getRotation()== Surface.ROTATION_270) mCamera.setDisplayOrientation(180); //Landscape rechts
     }
 
     @Override

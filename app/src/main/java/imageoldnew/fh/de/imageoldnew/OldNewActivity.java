@@ -24,7 +24,7 @@ public class OldNewActivity extends ActionBarActivity {
         try {
             InputStream inputStream = this.getResources().openRawResource(+R.drawable.reinoldi2);
             ImageFilter imageFilter = new ImageFilter(inputStream);
-            Bitmap bitmap = imageFilter.getFiltered();
+            Bitmap bitmap = imageFilter.getFiltered(100);
             ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
             imageView1.setImageBitmap(bitmap);
 

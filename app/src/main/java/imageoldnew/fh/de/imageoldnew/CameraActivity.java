@@ -3,7 +3,6 @@ package imageoldnew.fh.de.imageoldnew;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.net.Uri;
@@ -20,9 +19,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.Console;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 
@@ -37,9 +36,17 @@ public class CameraActivity extends ActionBarActivity {
         setContentView(R.layout.activity_camera);
 
         TouchImageView img = new TouchImageView(this);
-        img.setImageResource(R.drawable.reinoldi2);
-        img.setMaxZoom(4f);
-        img.setAlpha(0.5f);
+        try {
+            InputStream inputStream = this.getResources().openRawResource(+R.drawable.reinoldi2);
+            ImageFilter imageFilter = new ImageFilter(inputStream);
+            Bitmap bitmap = imageFilter.getFiltered(100);
+
+            img.setImageBitmap(bitmap);
+            img.setMaxZoom(4f);
+
+        } catch (NullPointerException ex) {
+            Log.e("Fehler", ex.toString());
+        }
 
         //Init Camera
         try {
@@ -88,6 +95,7 @@ public class CameraActivity extends ActionBarActivity {
             }
         });
     }
+
 
     // Storage for camera image URI components
     private final static String CAPTURED_PHOTO_PATH_KEY = "mCurrentPhotoPath";
