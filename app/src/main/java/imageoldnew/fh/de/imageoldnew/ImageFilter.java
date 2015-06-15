@@ -114,19 +114,13 @@ public class ImageFilter {
 
         //Step2
         filter = new int[][]{
-                {1, 1, 1},
-                {1, 0, 1},
-                {1, 1, 1}
+                {0, 0, 1, 0, 0},
+                {0, 1, 1, 1, 0},
+                {0, 1, 0, 1, 0},
+                {0, 1, 1, 1, 0},
+                {0, 0, 1, 0, 0}
         };
         tmp = ImageFilter.BoxFilter(filter, tmp);
-
-            /*boolean[][] bfilter = new boolean[][]{
-                    {true, true, true},
-                    {true, false, true},
-                    {true, true, true}
-            };
-            Bitmap step3Bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-            this.BinAndFilter(bfilter, step3Bitmap, step2Bitmap, 5);*/
 
         //Step3
         boolean[][] bfilter = new boolean[][]{
@@ -145,8 +139,11 @@ public class ImageFilter {
                 int tmp_px1 = tmp[x][y];
                 int tmp_px2 = this.step0Bitmap[x][y] & 0x00FFFFFF;
                 int newpx = 0;
+
+                int grey = 255 - (int) ((this.step0Bitmap[x][y] >> 16 & 0xFF) * 0.3 + (this.step0Bitmap[x][y] >> 8 & 0xFF) * 0.584 + (this.step0Bitmap[x][y] & 0xFF) * 0.114);
+
                 if (((tmp_px1 & 0xFF000000) >>> 24) > 127) {
-                    newpx = tmp_px2 | 0xFF000000;
+                    newpx = tmp_px2 | grey << 24; //0xFF000000;
                 } else {
                     newpx = tmp_px2 | (alpha << 24);
                 }
