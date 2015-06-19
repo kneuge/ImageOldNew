@@ -153,5 +153,4 @@ public class ImageFilter {
 
         return resultBitmap;
     }
-
 }
