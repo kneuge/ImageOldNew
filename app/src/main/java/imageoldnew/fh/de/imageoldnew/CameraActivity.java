@@ -30,27 +30,14 @@ public class CameraActivity extends ActionBarActivity {
 
     private Camera mCamera = null;
     private CameraView mCameraView = null;
+    private int[] photos={R.drawable.f244,R.drawable.f668,R.drawable.f261,R.drawable.f404,R.drawable.f207,R.drawable.f402};
+    private static int currentPhoto=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-
-        TouchImageView img = new TouchImageView(this);
-        try {
-            InputStream inputStream = this.getResources().openRawResource(+R.drawable.reinoldi2);
-            ImageFilter imageFilter = new ImageFilter(inputStream);
-            Bitmap bitmap = imageFilter.getFiltered(0);
-
-            ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
-            imageView1.setImageBitmap(bitmap);
-
-            img.setImageBitmap(bitmap);
-            img.setMaxZoom(4f);
-
-        } catch (NullPointerException ex) {
-            Log.e("Fehler", ex.toString());
-        }
+        setImage((++currentPhoto)%photos.length);
 
         //Init Camera
         try {
@@ -60,9 +47,6 @@ public class CameraActivity extends ActionBarActivity {
                 mCameraView = new CameraView(this, mCamera);//create a SurfaceView to show camera data
                 FrameLayout camera_view = (FrameLayout) findViewById(R.id.camera_view);
                 camera_view.addView(mCameraView);//add the SurfaceView to the layout
-                //camera_view.addView(img);
-
-
 
 
             } else {
@@ -114,6 +98,20 @@ public class CameraActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void setImage(int index){
+        try {
+            InputStream inputStream = this.getResources().openRawResource(photos[index]);
+            ImageFilter imageFilter = new ImageFilter(inputStream);
+            Bitmap bitmap = imageFilter.getFiltered(0);
+
+            ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
+            imageView1.setImageBitmap(bitmap);
+
+        } catch (NullPointerException ex) {
+            Log.e("Fehler", ex.toString());
+        }
     }
 
 
