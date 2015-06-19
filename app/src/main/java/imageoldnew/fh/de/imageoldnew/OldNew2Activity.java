@@ -11,26 +11,27 @@ import android.widget.SeekBar;
 import java.io.InputStream;
 
 
-public class OldNewActivity extends ActionBarActivity {
+public class OldNew2Activity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_oldnew);
+        setContentView(R.layout.activity_oldnew2);
 
         try {
-            InputStream inputStream = this.getResources().openRawResource(+R.drawable.reinoldi2);
+            InputStream inputStream = this.getResources().openRawResource(+R.drawable.f207);
             ImageFilter imageFilter = new ImageFilter(inputStream);
-            Bitmap bitmap = imageFilter.getFiltered(0);
-            ImageView imageView1 = (ImageView) findViewById(R.id.imageView1a);
+            Bitmap bitmap = imageFilter.getFiltered(100);
+            ImageView imageView1 = (ImageView) findViewById(R.id.imageView1b);
             imageView1.setImageBitmap(bitmap);
 
         } catch (NullPointerException ex) {
             Log.e("Fehler", ex.toString());
         }
 
-        SeekBar bar = (SeekBar) findViewById(R.id.seekBar);
-        final ImageView imageView2 = (ImageView) findViewById(R.id.imageView2a);
+        SeekBar bar = (SeekBar) findViewById(R.id.seekBarb);
+        ImageView imageView1 = (ImageView) findViewById(R.id.imageView1b);
+        final ImageView imageView2 = (ImageView) findViewById(R.id.imageView2b);
 
         bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

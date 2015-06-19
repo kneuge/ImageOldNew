@@ -28,6 +28,10 @@
             android:name=".OldNewActivity"
             android:label="@string/title_activity_oldnew" >
         </activity>
+        <activity
+            android:name=".OldNew2Activity"
+            android:label="@string/title_activity_oldnew2" >
+        </activity>
     </application>
 
 </manifest>

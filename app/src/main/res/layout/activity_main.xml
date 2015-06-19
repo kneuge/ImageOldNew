@@ -15,4 +15,11 @@
         android:layout_height="wrap_content"
         android:text="Starte Alt/Neu"
         android:id="@+id/bStartOldNew" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Starte Alt/Neu 2"
+        android:id="@+id/bStartOldNewb"
+        android:layout_below="@+id/bStartOldNew"
+        android:layout_alignEnd="@+id/bStartOldNew" />
 </RelativeLayout>

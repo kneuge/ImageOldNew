@@ -5,24 +5,22 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp" >
     <ImageView
-        android:id="@+id/imageView2a"
+        android:id="@+id/imageView1b"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alpha="0"
-        android:src="@drawable/reinoldi2_2015"
         android:adjustViewBounds="true"
         android:scaleType="fitXY" />
     <ImageView
-        android:id="@+id/imageView1a"
+        android:id="@+id/imageView2b"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/reinoldi2"
+        android:alpha="0"
+        android:src="@drawable/burgerking"
         android:adjustViewBounds="true"
         android:scaleType="fitXY" />
-
     <SeekBar
         android:layout_width="413dp"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
+        android:id="@+id/seekBarb"
         android:layout_gravity="center_horizontal|bottom" />
 </RelativeLayout>
