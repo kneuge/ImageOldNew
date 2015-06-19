@@ -3,6 +3,7 @@ package imageoldnew.fh.de.imageoldnew;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.net.Uri;
@@ -98,7 +99,19 @@ public class CameraActivity extends ActionBarActivity {
         takePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCamera.takePicture(null,null,myPictureCallback_JPG);
+                mCamera.takePicture(null, null, myPictureCallback_JPG);
+            }
+        });
+
+
+        final Button photoNext = (Button)findViewById(R.id.bPhotoNext);
+        photoNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setContentView(R.layout.activity_main);
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
             }
         });
     }
