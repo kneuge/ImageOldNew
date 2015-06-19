@@ -37,7 +37,7 @@ public class CameraActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        setImage((++currentPhoto)%photos.length);
+        setImage((++currentPhoto) % photos.length);
 
         //Init Camera
         try {
@@ -92,10 +92,8 @@ public class CameraActivity extends ActionBarActivity {
         photoNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_main);
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                mCamera.startPreview();
+                setImage((++currentPhoto)%photos.length);
             }
         });
     }
@@ -181,7 +179,5 @@ public class CameraActivity extends ActionBarActivity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-       // camera.startPreview();
     }};
 }
