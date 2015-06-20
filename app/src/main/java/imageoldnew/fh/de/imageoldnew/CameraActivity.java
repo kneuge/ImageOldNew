@@ -37,7 +37,7 @@ public class CameraActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        setImage((++currentPhoto) % photos.length);
+        setImage((currentPhoto) % photos.length);
 
         //Init Camera
         try {
