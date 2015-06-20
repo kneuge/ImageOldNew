@@ -84,6 +84,7 @@ public class CameraActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 mCamera.takePicture(null, null, myPictureCallback_JPG);
+                mCameraView.setPhotoTaken(true);
             }
         });
 
@@ -94,6 +95,7 @@ public class CameraActivity extends ActionBarActivity {
             public void onClick(View view) {
                 mCamera.startPreview();
                 setImage((++currentPhoto)%photos.length);
+                mCameraView.setPhotoTaken(false);
             }
         });
     }
