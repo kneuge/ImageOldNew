@@ -171,7 +171,7 @@ public class CameraActivity extends ActionBarActivity {
             imageFileOS.close();
 
             Toast.makeText(CameraActivity.this,
-                    "Image saved: " + uriTarget.toString(),
+                    "Foto gespeichert: \n" + uriTarget.toString(),
                     Toast.LENGTH_LONG).show();
 
         } catch (FileNotFoundException e) {
